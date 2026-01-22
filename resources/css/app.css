@@ -1,11 +1,21 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
-
-/* Custom Styles */
-:root {
-    --primary-color: #0d6efd;
-    --secondary-color: #6c757d;
+/* FIX Bootstrap collapse hidden by Tailwind */
+/* Fix Tailwind overriding Bootstrap collapse */
+.navbar-collapse.collapse {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    height: auto !important;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Mobile collapse animation */
+@media (max-width: 991px) {
+    #navbarNav {
+        transition: all 0.3s ease-in-out !important;
+    }
 }
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

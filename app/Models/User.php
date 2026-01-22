@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role', // ADD THIS
+        'phone', // ADD THIS
+        'cnic', // ADD THIS
+        'address', // ADD THIS
     ];
 
     /**
@@ -44,5 +48,32 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // Relationships
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    // Role Check Methods
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isStaff()
+    {
+        return $this->role === 'staff';
+    }
+
+    public function isStudent()
+    {
+        return $this->role === 'student';
     }
 }
